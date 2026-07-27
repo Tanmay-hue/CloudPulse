@@ -2,6 +2,8 @@
 
 CloudPulse is an enterprise-style DevOps project demonstrating an end-to-end CI/CD pipeline.
 
+![CI](https://github.com/Tanmay-hue/CloudPulse/actions/workflows/ci.yml/badge.svg)
+
 ## Tech Stack
 
 - FastAPI
