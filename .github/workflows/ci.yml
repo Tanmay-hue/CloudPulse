@@ -59,7 +59,7 @@ jobs:
         with:
           images: tanmay322/cloudpulse
           tags: |
-            type=latest
+            type=raw,value=latest
             type=sha
 
       - name: Build and Push Image
