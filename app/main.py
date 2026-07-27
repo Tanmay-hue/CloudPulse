@@ -6,16 +6,47 @@ from pydantic import BaseModel
 from typing import List
 import time
 
+from contextlib import asynccontextmanager
+import asyncio
+
 from app.metrics import REQUEST_COUNT, metrics
 from app.logger import logger
-from app.config import APP_NAME, APP_VERSION
 from app.config import APP_NAME, APP_VERSION, ENVIRONMENT
+
+app_state = {
+    "ready": False,
+    "shutdown": False
+}
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+
+    logger.info("Starting CloudPulse...")
+
+    # Simulate startup work
+    await asyncio.sleep(2)
+
+    app_state["ready"] = True
+
+    logger.info("CloudPulse Ready")
+
+    yield
+
+    logger.info("Gracefully shutting down...")
+
+    app_state["ready"] = False
+    app_state["shutdown"] = True
+
+    await asyncio.sleep(2)
+
+    logger.info("Shutdown Complete")
 
 
 app = FastAPI(
     title=APP_NAME,
     description="Enterprise DevOps Demo API",
-    version=APP_VERSION
+    version=APP_VERSION,
+    lifespan=lifespan
 )
 
 app.add_middleware(
@@ -51,6 +82,21 @@ def home():
         "environment": ENVIRONMENT
     }
 
+@app.get("/ready")
+def ready():
+
+    REQUEST_COUNT.inc()
+
+    if app_state["ready"]:
+
+        return {
+            "status": "Ready"
+        }
+
+    raise HTTPException(
+        status_code=503,
+        detail="Application not ready"
+    )
 
 @app.get("/health")
 def health():
@@ -61,9 +107,11 @@ def health():
 
         "status": "Healthy",
 
-        "uptime": "Running",
+        "application": APP_NAME,
 
-        "service": APP_NAME
+        "version": APP_VERSION,
+
+        "shutdown": app_state["shutdown"]
 
     }
 

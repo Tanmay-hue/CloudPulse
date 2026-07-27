@@ -71,3 +71,23 @@ Docker Compose
 ```bash
 docker compose up -d
 ```
+
+## Monitoring
+
+CloudPulse exposes Prometheus metrics at:
+
+```
+/metrics
+```
+
+Monitoring Stack
+
+- Prometheus
+- Grafana
+
+Features
+
+- Request Counter
+- Health Endpoint
+- Metrics Endpoint
+- Dashboard Ready

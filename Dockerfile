@@ -3,6 +3,9 @@ FROM python:3.13-slim
 LABEL maintainer="Tanmay Singh"
 LABEL project="CloudPulse"
 LABEL version="1.0.0"
+LABEL org.opencontainers.image.title="CloudPulse"
+LABEL org.opencontainers.image.description="Enterprise DevOps Demo"
+LABEL org.opencontainers.image.source="https://github.com/Tanmay-hue/CloudPulse"
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
