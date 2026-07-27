@@ -23,9 +23,6 @@ async def lifespan(app: FastAPI):
 
     logger.info("Starting CloudPulse...")
 
-    # Simulate startup work
-    await asyncio.sleep(2)
-
     app_state["ready"] = True
 
     logger.info("CloudPulse Ready")
