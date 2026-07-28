@@ -314,25 +314,25 @@ docker run -p 8000:8000 cloudpulse
 
 ## Swagger UI
 
-![Swagger UI](images/swagger-ui.png)
+![Swagger UI](https://github.com/Tanmay-hue/CloudPulse/blob/main/images/swagger-ui.png)
 
 ---
 
 ## GitHub Actions (Successful CI/CD)
 
-![GitHub Actions](images/github-actions.png)
+![GitHub Actions](https://github.com/Tanmay-hue/CloudPulse/blob/main/images/github-actions.png)
 
 ---
 
 ## Docker Hub Repository
 
-![Docker Hub](images/dockerhub.png)
+![Docker Hub](https://github.com/Tanmay-hue/CloudPulse/blob/main/images/dockerhub.png)
 
 ---
 
 ## Project Structure
 
-![Project Structure](images/project-structure.png)
+![Project Structure](https://github.com/Tanmay-hue/CloudPulse/blob/main/images/project-structure.png)
 
 ---
 
